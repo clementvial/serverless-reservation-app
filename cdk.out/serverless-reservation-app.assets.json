@@ -1,0 +1,19 @@
+{
+  "version": "16.0.0",
+  "files": {
+    "d68210379282922fe83a27a2756bfd52478ad4f275d0bedc29712cbdfc7ef5a4": {
+      "source": {
+        "path": "serverless-reservation-app.template.json",
+        "packaging": "file"
+      },
+      "destinations": {
+        "current_account-current_region": {
+          "bucketName": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}",
+          "objectKey": "d68210379282922fe83a27a2756bfd52478ad4f275d0bedc29712cbdfc7ef5a4.json",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-file-publishing-role-${AWS::AccountId}-${AWS::Region}"
+        }
+      }
+    }
+  },
+  "dockerImages": {}
+}

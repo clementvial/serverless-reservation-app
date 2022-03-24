@@ -1,0 +1,30 @@
+{
+  "name": "serverless-reservation-app",
+  "version": "1.0.0",
+  "description": "Create a simple Serverless reservation app with AWS CDK, TypeScript, Lambda and DynamoDB",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/clementvial/serverless-reservation-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/clementvial/serverless-reservation-app/issues"
+  },
+  "homepage": "https://github.com/clementvial/serverless-reservation-app#readme",
+  "volta": {
+    "node": "16.14.2",
+    "yarn": "1.22.18"
+  },
+  "devDependencies": {
+    "aws-cdk-lib": "^2.17.0",
+    "constructs": "^10.0.94",
+    "ts-node": "^10.7.0",
+    "typescript": "^4.6.2"
+  }
+}
