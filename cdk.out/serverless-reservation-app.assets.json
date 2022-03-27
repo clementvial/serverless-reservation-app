@@ -1,7 +1,20 @@
 {
   "version": "16.0.0",
   "files": {
-    "d68210379282922fe83a27a2756bfd52478ad4f275d0bedc29712cbdfc7ef5a4": {
+    "a14765c834e58c95d5b3e7d9f579641c2324c77dd1cca564b59dad682005dab6": {
+      "source": {
+        "path": "asset.a14765c834e58c95d5b3e7d9f579641c2324c77dd1cca564b59dad682005dab6",
+        "packaging": "zip"
+      },
+      "destinations": {
+        "current_account-current_region": {
+          "bucketName": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}",
+          "objectKey": "a14765c834e58c95d5b3e7d9f579641c2324c77dd1cca564b59dad682005dab6.zip",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-file-publishing-role-${AWS::AccountId}-${AWS::Region}"
+        }
+      }
+    },
+    "6d89ea0979f7e8635c17c7a436bf652ed3bcb0953dabb12a3a72edd8a4eb7bbd": {
       "source": {
         "path": "serverless-reservation-app.template.json",
         "packaging": "file"
@@ -9,7 +22,7 @@
       "destinations": {
         "current_account-current_region": {
           "bucketName": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}",
-          "objectKey": "d68210379282922fe83a27a2756bfd52478ad4f275d0bedc29712cbdfc7ef5a4.json",
+          "objectKey": "6d89ea0979f7e8635c17c7a436bf652ed3bcb0953dabb12a3a72edd8a4eb7bbd.json",
           "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-file-publishing-role-${AWS::AccountId}-${AWS::Region}"
         }
       }

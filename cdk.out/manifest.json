@@ -23,7 +23,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/d68210379282922fe83a27a2756bfd52478ad4f275d0bedc29712cbdfc7ef5a4.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/6d89ea0979f7e8635c17c7a436bf652ed3bcb0953dabb12a3a72edd8a4eb7bbd.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -39,6 +39,78 @@
         "serverless-reservation-app.assets"
       ],
       "metadata": {
+        "/serverless-reservation-app/ReservationApi/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ReservationApiB66E1A28"
+          }
+        ],
+        "/serverless-reservation-app/ReservationApi/CloudWatchRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ReservationApiCloudWatchRole6CF3F3FC"
+          }
+        ],
+        "/serverless-reservation-app/ReservationApi/Account": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ReservationApiAccountE08AC5F1"
+          }
+        ],
+        "/serverless-reservation-app/ReservationApi/Deployment/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ReservationApiDeploymentBCEFD038bcc7776548c00eeea1a7bdc730732e08"
+          }
+        ],
+        "/serverless-reservation-app/ReservationApi/DeploymentStage.prod/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ReservationApiDeploymentStageprod22EF6B2D"
+          }
+        ],
+        "/serverless-reservation-app/ReservationApi/Endpoint": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ReservationApiEndpointBE712419"
+          }
+        ],
+        "/serverless-reservation-app/ReservationApi/Default/hello/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ReservationApihello65F9A0B9"
+          }
+        ],
+        "/serverless-reservation-app/ReservationApi/Default/hello/GET/ApiPermission.serverlessreservationappReservationApiCDE2B09E.GET..hello": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ReservationApihelloGETApiPermissionserverlessreservationappReservationApiCDE2B09EGEThelloABD3D6F8"
+          }
+        ],
+        "/serverless-reservation-app/ReservationApi/Default/hello/GET/ApiPermission.Test.serverlessreservationappReservationApiCDE2B09E.GET..hello": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ReservationApihelloGETApiPermissionTestserverlessreservationappReservationApiCDE2B09EGEThelloA437305C"
+          }
+        ],
+        "/serverless-reservation-app/ReservationApi/Default/hello/GET/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ReservationApihelloGET76225BFE"
+          }
+        ],
+        "/serverless-reservation-app/helloLambda/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "helloLambdaServiceRoleBB046714"
+          }
+        ],
+        "/serverless-reservation-app/helloLambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "helloLambda79DCE371"
+          }
+        ],
         "/serverless-reservation-app/CDKMetadata/Default": [
           {
             "type": "aws:cdk:logicalId",

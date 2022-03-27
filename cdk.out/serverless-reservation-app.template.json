@@ -1,14 +1,343 @@
 {
   "Resources": {
+    "ReservationApiB66E1A28": {
+      "Type": "AWS::ApiGateway::RestApi",
+      "Properties": {
+        "Name": "ReservationApi"
+      },
+      "Metadata": {
+        "aws:cdk:path": "serverless-reservation-app/ReservationApi/Resource"
+      }
+    },
+    "ReservationApiCloudWatchRole6CF3F3FC": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "apigateway.amazonaws.com"
+              }
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition"
+                },
+                ":iam::aws:policy/service-role/AmazonAPIGatewayPushToCloudWatchLogs"
+              ]
+            ]
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "serverless-reservation-app/ReservationApi/CloudWatchRole/Resource"
+      }
+    },
+    "ReservationApiAccountE08AC5F1": {
+      "Type": "AWS::ApiGateway::Account",
+      "Properties": {
+        "CloudWatchRoleArn": {
+          "Fn::GetAtt": [
+            "ReservationApiCloudWatchRole6CF3F3FC",
+            "Arn"
+          ]
+        }
+      },
+      "DependsOn": [
+        "ReservationApiB66E1A28"
+      ],
+      "Metadata": {
+        "aws:cdk:path": "serverless-reservation-app/ReservationApi/Account"
+      }
+    },
+    "ReservationApiDeploymentBCEFD038bcc7776548c00eeea1a7bdc730732e08": {
+      "Type": "AWS::ApiGateway::Deployment",
+      "Properties": {
+        "RestApiId": {
+          "Ref": "ReservationApiB66E1A28"
+        },
+        "Description": "Automatically created by the RestApi construct"
+      },
+      "DependsOn": [
+        "ReservationApihelloGET76225BFE",
+        "ReservationApihello65F9A0B9"
+      ],
+      "Metadata": {
+        "aws:cdk:path": "serverless-reservation-app/ReservationApi/Deployment/Resource"
+      }
+    },
+    "ReservationApiDeploymentStageprod22EF6B2D": {
+      "Type": "AWS::ApiGateway::Stage",
+      "Properties": {
+        "RestApiId": {
+          "Ref": "ReservationApiB66E1A28"
+        },
+        "DeploymentId": {
+          "Ref": "ReservationApiDeploymentBCEFD038bcc7776548c00eeea1a7bdc730732e08"
+        },
+        "StageName": "prod"
+      },
+      "DependsOn": [
+        "ReservationApiAccountE08AC5F1"
+      ],
+      "Metadata": {
+        "aws:cdk:path": "serverless-reservation-app/ReservationApi/DeploymentStage.prod/Resource"
+      }
+    },
+    "ReservationApihello65F9A0B9": {
+      "Type": "AWS::ApiGateway::Resource",
+      "Properties": {
+        "ParentId": {
+          "Fn::GetAtt": [
+            "ReservationApiB66E1A28",
+            "RootResourceId"
+          ]
+        },
+        "PathPart": "hello",
+        "RestApiId": {
+          "Ref": "ReservationApiB66E1A28"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "serverless-reservation-app/ReservationApi/Default/hello/Resource"
+      }
+    },
+    "ReservationApihelloGETApiPermissionserverlessreservationappReservationApiCDE2B09EGEThelloABD3D6F8": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "Action": "lambda:InvokeFunction",
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "helloLambda79DCE371",
+            "Arn"
+          ]
+        },
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition"
+              },
+              ":execute-api:",
+              {
+                "Ref": "AWS::Region"
+              },
+              ":",
+              {
+                "Ref": "AWS::AccountId"
+              },
+              ":",
+              {
+                "Ref": "ReservationApiB66E1A28"
+              },
+              "/",
+              {
+                "Ref": "ReservationApiDeploymentStageprod22EF6B2D"
+              },
+              "/GET/hello"
+            ]
+          ]
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "serverless-reservation-app/ReservationApi/Default/hello/GET/ApiPermission.serverlessreservationappReservationApiCDE2B09E.GET..hello"
+      }
+    },
+    "ReservationApihelloGETApiPermissionTestserverlessreservationappReservationApiCDE2B09EGEThelloA437305C": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "Action": "lambda:InvokeFunction",
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "helloLambda79DCE371",
+            "Arn"
+          ]
+        },
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition"
+              },
+              ":execute-api:",
+              {
+                "Ref": "AWS::Region"
+              },
+              ":",
+              {
+                "Ref": "AWS::AccountId"
+              },
+              ":",
+              {
+                "Ref": "ReservationApiB66E1A28"
+              },
+              "/test-invoke-stage/GET/hello"
+            ]
+          ]
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "serverless-reservation-app/ReservationApi/Default/hello/GET/ApiPermission.Test.serverlessreservationappReservationApiCDE2B09E.GET..hello"
+      }
+    },
+    "ReservationApihelloGET76225BFE": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "HttpMethod": "GET",
+        "ResourceId": {
+          "Ref": "ReservationApihello65F9A0B9"
+        },
+        "RestApiId": {
+          "Ref": "ReservationApiB66E1A28"
+        },
+        "AuthorizationType": "NONE",
+        "Integration": {
+          "IntegrationHttpMethod": "POST",
+          "Type": "AWS_PROXY",
+          "Uri": {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition"
+                },
+                ":apigateway:",
+                {
+                  "Ref": "AWS::Region"
+                },
+                ":lambda:path/2015-03-31/functions/",
+                {
+                  "Fn::GetAtt": [
+                    "helloLambda79DCE371",
+                    "Arn"
+                  ]
+                },
+                "/invocations"
+              ]
+            ]
+          }
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "serverless-reservation-app/ReservationApi/Default/hello/GET/Resource"
+      }
+    },
+    "helloLambdaServiceRoleBB046714": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "lambda.amazonaws.com"
+              }
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition"
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+              ]
+            ]
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "serverless-reservation-app/helloLambda/ServiceRole/Resource"
+      }
+    },
+    "helloLambda79DCE371": {
+      "Type": "AWS::Lambda::Function",
+      "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+          },
+          "S3Key": "a14765c834e58c95d5b3e7d9f579641c2324c77dd1cca564b59dad682005dab6.zip"
+        },
+        "Role": {
+          "Fn::GetAtt": [
+            "helloLambdaServiceRoleBB046714",
+            "Arn"
+          ]
+        },
+        "Handler": "hello.main",
+        "Runtime": "nodejs14.x"
+      },
+      "DependsOn": [
+        "helloLambdaServiceRoleBB046714"
+      ],
+      "Metadata": {
+        "aws:cdk:path": "serverless-reservation-app/helloLambda/Resource",
+        "aws:asset:path": "asset.a14765c834e58c95d5b3e7d9f579641c2324c77dd1cca564b59dad682005dab6",
+        "aws:asset:is-bundled": false,
+        "aws:asset:property": "Code"
+      }
+    },
     "CDKMetadata": {
       "Type": "AWS::CDK::Metadata",
       "Properties": {
-        "Analytics": "v2:deflate64:H4sIAAAAAAAA/zPSMzTXM1BMLC/WTU7J1s3JTNKrDi5JTM7WcU7LC0otzi8tSk4FsZ3z81IySzLz82p18vJTUvWyivXLDM30DI31jBSzijMzdYtK80oyc1P1giA0APgZz5xZAAAA"
+        "Analytics": "v2:deflate64:H4sIAAAAAAAA/1WQwU7DMBBEv6V3ZyGtBOe0qDcEKh9QbZ0lbBPbUdamqqL8O2sMopzm7Xg9HnkN9SPcr/AilW37auATzG8RbW/UOs44coeRLniF+UASm5HN7t3fYGNtSD6aJxqHcHWkqO7NpGkdZa+AXg1psrRF+Rt+Mgs/U/wIbbYKLYbR6fNhKHuqixnQnVqEWY1XmhyLcPBmn7yNGdT+5cXI5ogiFAWaLDrDNtmeYu6w5N2XFMcUzfdxrsm++1dJeRd8yyXPh5bgLHef9QPUG1ivzsJcTfoL7AgORb8Aqc/AKVkBAAA="
       },
       "Metadata": {
         "aws:cdk:path": "serverless-reservation-app/CDKMetadata/Default"
       },
       "Condition": "CDKMetadataAvailable"
+    }
+  },
+  "Outputs": {
+    "ReservationApiEndpointBE712419": {
+      "Value": {
+        "Fn::Join": [
+          "",
+          [
+            "https://",
+            {
+              "Ref": "ReservationApiB66E1A28"
+            },
+            ".execute-api.",
+            {
+              "Ref": "AWS::Region"
+            },
+            ".",
+            {
+              "Ref": "AWS::URLSuffix"
+            },
+            "/",
+            {
+              "Ref": "ReservationApiDeploymentStageprod22EF6B2D"
+            },
+            "/"
+          ]
+        ]
+      }
     }
   },
   "Conditions": {
