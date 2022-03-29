@@ -14,7 +14,7 @@
         }
       }
     },
-    "6d89ea0979f7e8635c17c7a436bf652ed3bcb0953dabb12a3a72edd8a4eb7bbd": {
+    "f697ec072262783b05fee9961b596dc7a901da52126cb6d64040ad12d2b41fa5": {
       "source": {
         "path": "serverless-reservation-app.template.json",
         "packaging": "file"
@@ -22,7 +22,7 @@
       "destinations": {
         "current_account-current_region": {
           "bucketName": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}",
-          "objectKey": "6d89ea0979f7e8635c17c7a436bf652ed3bcb0953dabb12a3a72edd8a4eb7bbd.json",
+          "objectKey": "f697ec072262783b05fee9961b596dc7a901da52126cb6d64040ad12d2b41fa5.json",
           "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-file-publishing-role-${AWS::AccountId}-${AWS::Region}"
         }
       }

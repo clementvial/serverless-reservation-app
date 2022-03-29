@@ -7,8 +7,15 @@ import {
 } from "aws-cdk-lib/aws-lambda";
 import { join } from "path";
 import { LambdaIntegration, RestApi } from "aws-cdk-lib/aws-apigateway";
+import { GenericTable } from "./GenericTable";
+
 export class ReservationStack extends Stack {
   private api = new RestApi(this, "ReservationApi");
+  private reservationTable = new GenericTable(
+    "ReservationTable",
+    "reservationId",
+    this
+  );
 
   constructor(scope: Construct, id: string, props: StackProps) {
     super(scope, id, props);

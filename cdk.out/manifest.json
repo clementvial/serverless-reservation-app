@@ -23,7 +23,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/6d89ea0979f7e8635c17c7a436bf652ed3bcb0953dabb12a3a72edd8a4eb7bbd.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/f697ec072262783b05fee9961b596dc7a901da52126cb6d64040ad12d2b41fa5.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -97,6 +97,20 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "ReservationApihelloGET76225BFE"
+          }
+        ],
+        "/serverless-reservation-app/ReservationTable": [
+          {
+            "type": "aws:cdk:hasPhysicalName",
+            "data": {
+              "Ref": "ReservationTable2D1B2DF4"
+            }
+          }
+        ],
+        "/serverless-reservation-app/ReservationTable/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ReservationTable2D1B2DF4"
           }
         ],
         "/serverless-reservation-app/helloLambda/ServiceRole/Resource": [

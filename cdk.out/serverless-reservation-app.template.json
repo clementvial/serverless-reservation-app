@@ -239,6 +239,33 @@
         "aws:cdk:path": "serverless-reservation-app/ReservationApi/Default/hello/GET/Resource"
       }
     },
+    "ReservationTable2D1B2DF4": {
+      "Type": "AWS::DynamoDB::Table",
+      "Properties": {
+        "KeySchema": [
+          {
+            "AttributeName": "reservationId",
+            "KeyType": "HASH"
+          }
+        ],
+        "AttributeDefinitions": [
+          {
+            "AttributeName": "reservationId",
+            "AttributeType": "S"
+          }
+        ],
+        "ProvisionedThroughput": {
+          "ReadCapacityUnits": 5,
+          "WriteCapacityUnits": 5
+        },
+        "TableName": "ReservationTable"
+      },
+      "UpdateReplacePolicy": "Retain",
+      "DeletionPolicy": "Retain",
+      "Metadata": {
+        "aws:cdk:path": "serverless-reservation-app/ReservationTable/Resource"
+      }
+    },
     "helloLambdaServiceRoleBB046714": {
       "Type": "AWS::IAM::Role",
       "Properties": {
@@ -304,7 +331,7 @@
     "CDKMetadata": {
       "Type": "AWS::CDK::Metadata",
       "Properties": {
-        "Analytics": "v2:deflate64:H4sIAAAAAAAA/1WQwU7DMBBEv6V3ZyGtBOe0qDcEKh9QbZ0lbBPbUdamqqL8O2sMopzm7Xg9HnkN9SPcr/AilW37auATzG8RbW/UOs44coeRLniF+UASm5HN7t3fYGNtSD6aJxqHcHWkqO7NpGkdZa+AXg1psrRF+Rt+Mgs/U/wIbbYKLYbR6fNhKHuqixnQnVqEWY1XmhyLcPBmn7yNGdT+5cXI5ogiFAWaLDrDNtmeYu6w5N2XFMcUzfdxrsm++1dJeRd8yyXPh5bgLHef9QPUG1ivzsJcTfoL7AgORb8Aqc/AKVkBAAA="
+        "Analytics": "v2:deflate64:H4sIAAAAAAAA/1WQQU/DMAyFf8vumaGbBOduiBsCDe6Tm5jitUmqJmGqqv53nAW0cfL3npxnOxuoHuF+heew1qZb99zA/B5Rd0qs44wDtxjpjBPMBwqxHljtP90N1lr75KJ6oqH3kyVBcW+UpLWUvQLy1KdR0w7DVfxmFn6h+OVNtgotitHKeN+XPqmL6tE2BmEW441GyyGwd+o5OR0ziP3HizKTQ+uNXPaBTQm5wKLC9oghUAxQ5yIadkl3FPN2S258TXFI8bropS9fwq79t7Xw3jvDZaTzhuAU7r6rB6i2sFmdAvN6lI9iS3Ao9Qcjb6MffAEAAA=="
       },
       "Metadata": {
         "aws:cdk:path": "serverless-reservation-app/CDKMetadata/Default"
