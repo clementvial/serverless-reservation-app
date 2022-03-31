@@ -23,9 +23,13 @@
   },
   "devDependencies": {
     "@types/node": "^17.0.23",
+    "@types/uuid": "^8.3.4",
     "aws-cdk-lib": "^2.17.0",
     "constructs": "^10.0.94",
+    "esbuild": "^0.14.28",
     "ts-node": "^10.7.0",
-    "typescript": "^4.6.2"
-  }
+    "typescript": "^4.6.2",
+    "uuid": "^8.3.2"
+  },
+  "dependencies": {}
 }

@@ -5,6 +5,8 @@ import {
   Function as LambdaFunction,
   Runtime,
 } from "aws-cdk-lib/aws-lambda";
+import { NodejsFunction } from "aws-cdk-lib/aws-lambda-nodejs";
+
 import { join } from "path";
 import { LambdaIntegration, RestApi } from "aws-cdk-lib/aws-apigateway";
 import { GenericTable } from "./GenericTable";
@@ -26,8 +28,13 @@ export class ReservationStack extends Stack {
       handler: "hello.main",
     });
 
+    const nodeLambda = new NodejsFunction(this, "helloLambdaNodeJs", {
+      entry:join(__dirname, "..", "services", "node-lambda", "hello.ts"),
+      handler: "handler",
+    });
+
     // Hello Api lambda integration
-    const helloLambdaIntegration = new LambdaIntegration(helloLambda);
+    const helloLambdaIntegration = new LambdaIntegration(nodeLambda);
     const helloLambdaResource = this.api.root.addResource("hello");
     helloLambdaResource.addMethod("GET", helloLambdaIntegration);
   }
