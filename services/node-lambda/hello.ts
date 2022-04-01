@@ -1,8 +1,13 @@
 import { v4 } from "uuid";
+import { S3 } from 'aws-sdk';
+
+const s3Client = new S3();
 
 export async function handler(event: any, context:any) {
+  const buckets = await s3Client.listBuckets().promise();
+
   return {
     statusCode: 200,
-    body: `Hello from node lambda ${v4()}`
+    body: `Here are your buckets: ${JSON.stringify(buckets)}`
   }
 }
