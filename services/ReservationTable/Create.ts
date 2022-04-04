@@ -14,10 +14,10 @@ async function handler(event: APIGatewayProxyEvent, context: Context): Promise<A
   }
 
   try {
-    dbClient.put({
+    await dbClient.put({
       TableName: 'ReservationTable',
       Item: item
-    })
+    }).promise()
   } catch (error) {
     result.body = error.message
   }
