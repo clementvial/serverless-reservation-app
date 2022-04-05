@@ -1,3 +1,10 @@
 import { handler } from "../../services/ReservationTable/Create";
+import { APIGatewayProxyEvent } from 'aws-lambda';
 
-handler({} as any, {} as any);
+const event = {  
+  body: JSON.stringify({
+    location: 'Paris'
+  })
+}
+
+handler(event as any, {} as any);
