@@ -18,8 +18,8 @@
   },
   "homepage": "https://github.com/clementvial/serverless-reservation-app#readme",
   "volta": {
-    "node": "16.14.2",
-    "yarn": "1.22.18"
+    "node": "18.16.0",
+    "yarn": "3.6.0-git.20230603.hash-3c8237cb"
   },
   "devDependencies": {
     "@types/aws-lambda": "^8.10.93",
