@@ -47,3 +47,6 @@ yarn-error.log
 
 /.versionrc.json
 RELEASE_NOTES.md
+
+.vscode/
+requests.http
